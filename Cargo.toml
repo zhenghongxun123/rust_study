@@ -1,0 +1,11 @@
+[package]
+name = "rust_study"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+#rusqlite = { version = "=0.34.0", features = ["bundled"] }
+#sqlx = { version = "0.8", features = ["sqlite", "runtime-tokio", "tls-native-tls"] }
+tokio = { version = "1.44.1", features = ["full"] }
+sqlx = { version = "=0.8.1", features = ["sqlite", "runtime-tokio", "tls-native-tls"] }
+rusqlite = { version = "=0.32.1",features = ["bundled"] }

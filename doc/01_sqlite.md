@@ -3,6 +3,8 @@ sqlite 学习
 ## 1. 导入配置
    > rusqlite = { version = "=0.34.0", features = ["bundled"] }
 
+   >features = ["full"] 含义使用所有的扩展功能
+
 ## 2.代码执行
 
 ````

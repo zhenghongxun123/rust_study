@@ -1,3 +1,20 @@
+sqlite 学习
+
+## 1. 导入配置
+
+
+````
+tokio = { version = "1.44.1", features = ["full"] }
+sqlx = { version = "=0.8.1", features = ["sqlite", "runtime-tokio", "tls-native-tls"] }
+rusqlite = { version = "=0.32.1",features = ["bundled"] }
+
+````
+> 请注意 sqlx 和 rusqlite 都会引入库 libsqlite3-sys .可能会导致编译失败。如果出现编译问题，降低rusqlite的版本
+
+
+## 2.代码执行
+
+````
 use sqlx::SqlitePool;
 
 #[derive(sqlx::FromRow, Debug, PartialEq, Eq)]
@@ -59,3 +76,23 @@ async fn main() -> Result<(), sqlx::Error> {
 
     Ok(())
 }
+
+````
+
+## 3.代码说明
+ > let pool = SqlitePool::connect("sqlite://D:/05XIANGMU/rust/rust_study/my_database.db").await?;
+ ````
+sqlite://：这是 sqlx 中 SQLite 连接字符串的前缀。
+绝对路径：在 sqlite:// 后面直接跟上数据库文件的绝对路径。
+在 Unix/Linux/macOS 系统中，路径格式为 /home/user/databases/my_database.db。
+在 Windows 系统中，路径格式为 C:/Users/User/databases/my_database.db（注意使用正斜杠 / 而不是反斜杠 \）。
+ ````
+ > let pool = SqlitePool::connect("sqlite:my_database.db").await?;
+ ````
+相对路径：在 sqlite: 后面直接跟上数据库文件的相对路径。
+ ````
+
+## 4.增删改查
+````
+上面添加表、删除表、添加数据、删除数据、查询数据
+````
